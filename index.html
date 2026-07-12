@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת שעות ושכר - DRS RADA</title>
+    <!-- Tailwind CSS for modern and responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Rubik (Modern Hebrew Font) and Montserrat (for sharp tech italic look) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&family=Montserrat:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #f8fafc;
+        }
+        .text-rada-red {
+            color: #e30613;
+        }
+        .bg-rada-red {
+            background-color: #e30613;
+        }
+        .hover-bg-rada-red:hover {
+            background-color: #c20510;
+        }
+        .border-rada-red {
+            border-color: #e30613;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        /* Special slant font style matching the DRS RADA logo perfectly */
+        .rada-font {
+            font-family: 'Montserrat', sans-serif;
+            font-style: italic;
+            font-weight: 900;
+        }
+        
+        /* Smooth fade-in and transition animations */
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-8 bg-slate-50">
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="w-full max-w-2xl bg-white rounded-2xl custom-shadow p-6 md:p-8 fade-in border border-slate-100">
+        <!-- Exact DRS RADA Logo matching image -->
+        <div class="flex flex-col items-center mb-10">
+            <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+                <!-- SVG Icon mimicking the uploaded logo perfectly with dynamic sweeps -->
+                <svg class="h-14 w-14 shrink-0" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Blade 1: sweeps top-right -->
+                    <path d="M35,48 C50,22 80,10 105,10 C80,22 55,38 35,48 Z" fill="#e30613"/>
+                    <!-- Blade 2: sweeps mid-top-right -->
+                    <path d="M38,54 C65,42 95,34 118,34 C88,44 58,52 38,54 Z" fill="#e30613"/>
+                    <!-- Blade 3: sweeps mid-lower-right -->
+                    <path d="M38,62 C65,65 95,68 118,70 C88,68 58,64 38,62 Z" fill="#e30613"/>
+                    <!-- Blade 4: sweeps lower-right -->
+                    <path d="M35,68 C50,88 80,102 105,102 C80,92 55,78 35,68 Z" fill="#e30613"/>
+                    <!-- Blade 5: sweeps bottom -->
+                    <path d="M28,72 C35,92 48,110 58,115 C45,102 35,88 28,72 Z" fill="#e30613"/>
+                    <!-- Blade 6: sweeps left-bottom -->
+                    <path d="M22,68 C12,85 2,98 0,102 C5,88 12,75 22,68 Z" fill="#e30613"/>
+                    <!-- Blade 7: sweeps left -->
+                    <path d="M20,58 C5,58 1,58 0,58 C1,54 5,54 20,58 Z" fill="#e30613"/>
+                    <!-- Blade 8: sweeps left-top -->
+                    <path d="M22,48 C12,32 2,18 0,12 C5,22 12,35 22,48 Z" fill="#e30613"/>
+                    <!-- Blade 9: sweeps top -->
+                    <path d="M28,44 C35,22 48,10 58,5 C45,12 35,28 28,44 Z" fill="#e30613"/>
+                </svg>
+                
+                <!-- Accurate single-line italicized text -->
+                <div class="overflow-hidden max-w-full">
+                    <span class="rada-font text-2xl sm:text-3xl md:text-4xl text-rada-red tracking-tight leading-none block text-center sm:text-right whitespace-nowrap">DRS RADA TECHNOLOGIES</span>
+                </div>
+            </div>
+            
+            <h2 class="text-xl font-bold text-gray-800">כניסה למערכת שעות ושכר</h2>
+            <p class="text-gray-500 text-sm mt-1">אנא הזן את פרטי הגישה שלך</p>
+        </div>
+
+        <form id="login-form" onsubmit="handleLogin(event)" class="space-y-6">
+            <div>
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="username">
+                    <i class="fa-solid fa-user ml-1 text-gray-400"></i> שם משתמש
+                </label>
+                <input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition" 
+                       type="text" id="username" placeholder="andreyy" required>
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="password">
+                    <i class="fa-solid fa-lock ml-1 text-gray-400"></i> סיסמה
+                </label>
+                <div class="relative">
+                    <input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition" 
+                           type="password" id="password" placeholder="••••••••" required>
+                    <button type="button" onclick="togglePassword()" class="absolute inset-y-0 left-3 flex items-center text-gray-400 hover:text-gray-600">
+                        <i id="password-icon" class="fa-solid fa-eye-slash"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error message container -->
+            <div id="error-message" class="hidden bg-red-50 border-r-4 border-rada-red p-3 rounded text-sm text-rada-red">
+                <i class="fa-solid fa-circle-exclamation ml-1"></i> שם משתמש או סיסמה שגויים!
+            </div>
+
+            <button class="w-full py-3 bg-rada-red hover-bg-rada-red text-white font-bold rounded-lg transition duration-200 shadow-md flex items-center justify-center gap-2" type="submit">
+                <span>התחבר למערכת</span>
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+        </form>
+    </div>
+
+    <!-- MAIN APP DASHBOARD (Hidden initially) -->
+    <div id="app-dashboard" class="hidden w-full max-w-6xl bg-white rounded-2xl custom-shadow overflow-hidden">
+        <!-- Top bar with logo and user logout -->
+        <header class="bg-slate-900 text-white px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 border-b-4 border-rada-red">
+            <div class="flex items-center gap-3">
+                <!-- White/Red Logo version for dark header -->
+                <svg class="h-10 w-10 shrink-0" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35,48 C50,22 80,10 105,10 C80,22 55,38 35,48 Z" fill="#e30613"/>
+                    <path d="M38,54 C65,42 95,34 118,34 C88,44 58,52 38,54 Z" fill="#e30613"/>
+                    <path d="M38,62 C65,65 95,68 118,70 C88,68 58,64 38,62 Z" fill="#e30613"/>
+                    <path d="M35,68 C50,88 80,102 105,102 C80,92 55,78 35,68 Z" fill="#e30613"/>
+                    <path d="M28,72 C35,92 48,110 58,115 C45,102 35,88 28,72 Z" fill="#e30613"/>
+                    <path d="M22,68 C12,85 2,98 0,102 C5,88 12,75 22,68 Z" fill="#e30613"/>
+                    <path d="M20,58 C5,58 1,58 0,58 C1,54 5,54 20,58 Z" fill="#e30613"/>
+                    <path d="M22,48 C12,32 2,18 0,12 C5,22 12,35 22,48 Z" fill="#e30613"/>
+                    <path d="M28,44 C35,22 48,10 58,5 C45,12 35,28 28,44 Z" fill="#e30613"/>
+                </svg>
+                <div class="overflow-hidden">
+                    <span class="rada-font text-xl md:text-2xl text-white tracking-tight leading-none whitespace-nowrap block">DRS RADA TECHNOLOGIES</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="text-right">
+                    <div class="text-sm text-gray-400">מחובר כעת:</div>
+                    <div class="font-bold text-white flex items-center gap-1">
+                        <i class="fa-solid fa-user-circle text-rada-red"></i>
+                        <span id="user-display">andreyy</span>
+                    </div>
+                </div>
+                <button onclick="handleLogout()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-sm font-medium transition flex items-center gap-2">
+                    <span>התנתק</span>
+                    <i class="fa-solid fa-right-from-bracket text-rada-red"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace Grid -->
+        <div class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Right Column - Metrics Cards & Reporting Instructions -->
+            <div class="lg:col-span-1 space-y-6">
+                
+                <!-- Quick Info Panel -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 rounded-xl custom-shadow relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-lg font-medium text-slate-300">שכר ברוטו משוער (שבועי)</h3>
+                        <div id="grand-total-pay" class="text-4xl font-bold text-white mt-2">1,365.01 ₪</div>
+                        <div class="mt-4 pt-4 border-t border-slate-700 grid grid-cols-2 gap-4 text-xs text-slate-300">
+                            <div>
+                                <p>תעריף שעתי רגיל:</p>
+                                <p class="font-bold text-white text-sm mt-1">27.94 ₪</p>
+                            </div>
+                            <div>
+                                <p>תעריף נוספות (125%):</p>
+                                <p class="font-bold text-rada-red text-sm mt-1">34.93 ₪</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Shift Summary Stats -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm grid grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <span class="block text-xs text-gray-500">סה"כ שעות</span>
+                        <span id="stat-total-hours" class="block text-xl font-bold text-slate-800 mt-1">47.59</span>
+                    </div>
+                    <div class="text-center border-r border-gray-100">
+                        <span class="block text-xs text-gray-500">רגילות (100%)</span>
+                        <span id="stat-reg-hours" class="block text-xl font-bold text-emerald-600 mt-1">42.53</span>
+                    </div>
+                    <div class="text-center border-r border-gray-100">
+                        <span class="block text-xs text-gray-500">נוספות (125%)</span>
+                        <span id="stat-ot-hours" class="block text-xl font-bold text-amber-500 mt-1">5.06</span>
+                    </div>
+                </div>
+
+                <!-- NEW Reporting Instructions Card -->
+                <div class="bg-blue-50 border-r-4 border-blue-500 p-5 rounded-xl shadow-sm">
+                    <h4 class="font-bold text-blue-900 flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>הנחיות לדיווח שעות</span>
+                    </h4>
+                    <p class="text-sm text-blue-800 leading-relaxed">
+                        לצורך דיווח שעות יש לדווח באפליקציה <strong class="font-bold">Timewatch</strong> ואחר כך יש לשלוח את הדיווח למייל הבא:
+                    </p>
+                    <a href="mailto:rada-sahar@yemelin.org" class="mt-2 inline-flex items-center gap-1.5 font-semibold text-blue-900 hover:text-blue-700 underline break-all text-sm">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>rada-sahar@yemelin.org</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Left Column - Interactive Data Table -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-table-list text-rada-red"></i>
+                            <span>פירוט שעות יומי מצטבר</span>
+                        </h3>
+                        <button onclick="resetToInitialData()" class="text-xs text-gray-500 hover:text-rada-red transition flex items-center gap-1">
+                            <i class="fa-solid fa-rotate-left"></i>
+                            <span>אפס לנתוני בסיס</span>
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-right border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-50 text-gray-600 border-b border-gray-200">
+                                    <th class="p-4 font-semibold">יום</th>
+                                    <th class="p-4 font-semibold">שעות עבודה בפועל</th>
+                                    <th class="p-4 font-semibold text-center">סה"כ שעות</th>
+                                    <th class="p-4 font-semibold text-center">רגילות (100%)</th>
+                                    <th class="p-4 font-semibold text-center">נוספות (125%)</th>
+                                    <th class="p-4 font-semibold text-left">שכר יומי משוער</th>
+                                    <th class="p-4 text-center"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="shifts-tbody" class="divide-y divide-gray-100">
+                                <!-- Generated Dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Notification system instead of alerts -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white py-3 px-6 rounded-lg shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
+        <span id="toast-message">פעולה בוצעה בהצלחה!</span>
+    </div>
+
+    <script>
+        // Set exact credentials requested
+        const CORRECT_USERNAME = "andreyy";
+        const CORRECT_PASSWORD = "AN0726!inarmorr";
+        
+        // Rates
+        const BASE_RATE = 27.94;
+        const OT_RATE = BASE_RATE * 1.25;
+        const REG_DAILY_LIMIT = 8.6; // 8 hours and 36 minutes
+
+        // Initial 5-day state requested by user
+        const initialShifts = [
+            { id: 1, day: "יום ראשון", raw: "10:10", totalHours: 10.17, regHours: 8.6, otHours: 1.57 },
+            { id: 2, day: "יום שני", raw: "10:00", totalHours: 10.00, regHours: 8.6, otHours: 1.40 },
+            { id: 3, day: "יום שלישי", raw: "10:03", totalHours: 10.05, regHours: 8.6, otHours: 1.45 },
+            { id: 4, day: "יום רביעי", raw: "09:15", totalHours: 9.25, regHours: 8.6, otHours: 0.65 },
+            { id: 5, day: "יום חמישי", raw: "09:00 עד 17:08", totalHours: 8.13, regHours: 8.13, otHours: 0.00 }
+        ];
+
+        let shifts = [...initialShifts];
+
+        // Toggle password visibility
+        function togglePassword() {
+            const pwdInput = document.getElementById('password');
+            const pwdIcon = document.getElementById('password-icon');
+            if (pwdInput.type === 'password') {
+                pwdInput.type = 'text';
+                pwdIcon.className = "fa-solid fa-eye";
+            } else {
+                pwdInput.type = 'password';
+                pwdIcon.className = "fa-solid fa-eye-slash";
+            }
+        }
+
+        // Handle Login sequence
+        function handleLogin(event) {
+            event.preventDefault();
+            const uInput = document.getElementById('username').value.trim();
+            const pInput = document.getElementById('password').value.trim();
+            const errorBox = document.getElementById('error-message');
+
+            if (uInput === CORRECT_USERNAME && pInput === CORRECT_PASSWORD) {
+                errorBox.classList.add('hidden');
+                
+                // Beautiful screen transition
+                const loginScreen = document.getElementById('login-screen');
+                const appDashboard = document.getElementById('app-dashboard');
+                
+                loginScreen.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    loginScreen.classList.add('hidden');
+                    appDashboard.classList.remove('hidden');
+                    appDashboard.classList.add('opacity-100', 'scale-100');
+                    showToast("ברוך הבא! התחברת למערכת בהצלחה");
+                    renderDashboard();
+                }, 300);
+                
+            } else {
+                errorBox.classList.remove('hidden');
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            const loginScreen = document.getElementById('login-screen');
+            const appDashboard = document.getElementById('app-dashboard');
+            
+            document.getElementById('password').value = '';
+            
+            appDashboard.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                appDashboard.classList.add('hidden');
+                loginScreen.classList.remove('hidden');
+                loginScreen.classList.add('opacity-100', 'scale-100');
+                showToast("התנתקת מהמערכת בבטחה");
+            }, 300);
+        }
+
+        // Delete any specific shift row
+        function deleteShift(id) {
+            shifts = shifts.filter(s => s.id !== id);
+            renderDashboard();
+            showToast("המשמרת הוסרה מהטבלה");
+        }
+
+        // Reset to user's specified status
+        function resetToInitialData() {
+            shifts = [...initialShifts];
+            renderDashboard();
+            showToast("הנתונים אותחלו לנתוני הבסיס");
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Main calculations and DOM updates
+        function renderDashboard() {
+            const tbody = document.getElementById('shifts-tbody');
+            tbody.innerHTML = '';
+
+            let totalHoursAcc = 0;
+            let regHoursAcc = 0;
+            let otHoursAcc = 0;
+            let totalPayAcc = 0;
+
+            shifts.forEach(shift => {
+                // Calculate pay for this shift
+                const regPay = shift.regHours * BASE_RATE;
+                const otPay = shift.otHours * OT_RATE;
+                const totalShiftPay = regPay + otPay;
+
+                totalHoursAcc += shift.totalHours;
+                regHoursAcc += shift.regHours;
+                otHoursAcc += shift.otHours;
+                totalPayAcc += totalShiftPay;
+
+                // Create row
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition duration-150";
+                tr.innerHTML = `
+                    <td class="p-4 font-medium text-gray-800">${shift.day}</td>
+                    <td class="p-4 text-gray-500">${shift.raw}</td>
+                    <td class="p-4 text-center font-semibold text-slate-700">${shift.totalHours.toFixed(2)}</td>
+                    <td class="p-4 text-center text-emerald-600">${shift.regHours.toFixed(2)}</td>
+                    <td class="p-4 text-center text-amber-500">${shift.otHours.toFixed(2)}</td>
+                    <td class="p-4 text-left font-bold text-gray-800">${totalShiftPay.toLocaleString('he-IL', { style: 'currency', currency: 'ILS' })}</td>
+                    <td class="p-4 text-center">
+                        <button onclick="deleteShift(${shift.id})" class="text-gray-400 hover:text-rada-red transition" title="מחק משמרת">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Set total aggregates values
+            document.getElementById('stat-total-hours').innerText = totalHoursAcc.toFixed(2);
+            document.getElementById('stat-reg-hours').innerText = regHoursAcc.toFixed(2);
+            document.getElementById('stat-ot-hours').innerText = otHoursAcc.toFixed(2);
+            document.getElementById('grand-total-pay').innerText = totalPayAcc.toLocaleString('he-IL', { style: 'currency', currency: 'ILS' });
+        }
+    </script>
+</body>
+</html>
