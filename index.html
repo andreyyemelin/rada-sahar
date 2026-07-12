@@ -160,101 +160,116 @@
             </div>
         </header>
 
-        <!-- Main Workspace Grid -->
-        <div class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Main Workspace Container -->
+        <div class="p-6 space-y-6">
             
-            <!-- Right Column - Metrics Cards & Reporting Instructions -->
-            <div class="lg:col-span-1 space-y-6">
+            <!-- Missing Reporting Warning Banner -->
+            <div class="bg-red-50 border-r-4 border-rada-red p-4 rounded-xl shadow-sm flex items-center gap-3 fade-in">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-100 text-rada-red">
+                    <i class="fa-solid fa-triangle-exclamation text-lg animate-pulse"></i>
+                </span>
+                <div>
+                    <h4 class="font-bold text-red-900 text-sm md:text-base">התרעת דיווח שעות</h4>
+                    <p class="text-xs md:text-sm text-red-700">היום ה-12/07/2026 לא דווח כניסה ויציאה במערכת.</p>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                <!-- Quick Info Panel -->
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 rounded-xl custom-shadow relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
-                        <i class="fa-solid fa-coins"></i>
+                <!-- Right Column - Metrics Cards & Reporting Instructions -->
+                <div class="lg:col-span-1 space-y-6">
+                    
+                    <!-- Quick Info Panel -->
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 rounded-xl custom-shadow relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="text-lg font-medium text-slate-300">שכר ברוטו משוער (שבועי)</h3>
+                            <div id="grand-total-pay" class="text-4xl font-bold text-white mt-2">1,365.01 ₪</div>
+                            <div class="mt-4 pt-4 border-t border-slate-700 grid grid-cols-2 gap-4 text-xs text-slate-300">
+                                <div>
+                                    <p>תעריף שעתי רגיל:</p>
+                                    <p class="font-bold text-white text-sm mt-1">27.94 ₪</p>
+                                </div>
+                                <div>
+                                    <p>תעריף נוספות (125%):</p>
+                                    <p class="font-bold text-rada-red text-sm mt-1">34.93 ₪</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="relative z-10">
-                        <h3 class="text-lg font-medium text-slate-300">שכר ברוטו משוער (שבועי)</h3>
-                        <div id="grand-total-pay" class="text-4xl font-bold text-white mt-2">1,365.01 ₪</div>
-                        <div class="mt-4 pt-4 border-t border-slate-700 grid grid-cols-2 gap-4 text-xs text-slate-300">
-                            <div>
-                                <p>תעריף שעתי רגיל:</p>
-                                <p class="font-bold text-white text-sm mt-1">27.94 ₪</p>
-                            </div>
-                            <div>
-                                <p>תעריף נוספות (125%):</p>
-                                <p class="font-bold text-rada-red text-sm mt-1">34.93 ₪</p>
-                            </div>
+
+                    <!-- Live Shift Summary Stats -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm grid grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <span class="block text-xs text-gray-500">סה"כ שעות</span>
+                            <span id="stat-total-hours" class="block text-xl font-bold text-slate-800 mt-1">47.59</span>
+                        </div>
+                        <div class="text-center border-r border-gray-100">
+                            <span class="block text-xs text-gray-500">רגילות (100%)</span>
+                            <span id="stat-reg-hours" class="block text-xl font-bold text-emerald-600 mt-1">42.53</span>
+                        </div>
+                        <div class="text-center border-r border-gray-100">
+                            <span class="block text-xs text-gray-500">נוספות (125%)</span>
+                            <span id="stat-ot-hours" class="block text-xl font-bold text-amber-500 mt-1">5.06</span>
+                        </div>
+                    </div>
+
+                    <!-- Reporting Instructions Card -->
+                    <div class="bg-blue-50 border-r-4 border-blue-500 p-5 rounded-xl shadow-sm">
+                        <h4 class="font-bold text-blue-900 flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>הנחיות לדיווח שעות</span>
+                        </h4>
+                        <p class="text-sm text-blue-800 leading-relaxed">
+                            לצורך דיווח שעות יש לדווח באפליקציה <strong class="font-bold">Timewatch</strong> ואחר כך יש לשלוח את הדיווח למייל הבא:
+                        </p>
+                        <a href="mailto:rada-sahar@yemelin.org" class="mt-2 inline-flex items-center gap-1.5 font-semibold text-blue-900 hover:text-blue-700 underline break-all text-sm">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>rada-sahar@yemelin.org</span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Left Column - Interactive Data Table -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                            <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                                <i class="fa-solid fa-table-list text-rada-red"></i>
+                                <span>פירוט שעות יומי מצטבר</span>
+                            </h3>
+                            <button onclick="resetToInitialData()" class="text-xs text-gray-500 hover:text-rada-red transition flex items-center gap-1">
+                                <i class="fa-solid fa-rotate-left"></i>
+                                <span>אפס לנתוני בסיס</span>
+                            </button>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right border-collapse text-sm">
+                                <thead>
+                                    <tr class="bg-slate-50 text-gray-600 border-b border-gray-200">
+                                        <th class="p-4 font-semibold">יום / תאריך</th>
+                                        <th class="p-4 font-semibold">שעות עבודה בפועל</th>
+                                        <th class="p-4 font-semibold text-center">סה"כ שעות</th>
+                                        <th class="p-4 font-semibold text-center">רגילות (100%)</th>
+                                        <th class="p-4 font-semibold text-center">נוספות (125%)</th>
+                                        <th class="p-4 font-semibold text-left">שכר יומי משוער</th>
+                                        <th class="p-4 text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="shifts-tbody" class="divide-y divide-gray-100">
+                                    <!-- Generated Dynamically -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-                <!-- Live Shift Summary Stats -->
-                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm grid grid-cols-3 gap-4">
-                    <div class="text-center">
-                        <span class="block text-xs text-gray-500">סה"כ שעות</span>
-                        <span id="stat-total-hours" class="block text-xl font-bold text-slate-800 mt-1">47.59</span>
-                    </div>
-                    <div class="text-center border-r border-gray-100">
-                        <span class="block text-xs text-gray-500">רגילות (100%)</span>
-                        <span id="stat-reg-hours" class="block text-xl font-bold text-emerald-600 mt-1">42.53</span>
-                    </div>
-                    <div class="text-center border-r border-gray-100">
-                        <span class="block text-xs text-gray-500">נוספות (125%)</span>
-                        <span id="stat-ot-hours" class="block text-xl font-bold text-amber-500 mt-1">5.06</span>
-                    </div>
-                </div>
-
-                <!-- NEW Reporting Instructions Card -->
-                <div class="bg-blue-50 border-r-4 border-blue-500 p-5 rounded-xl shadow-sm">
-                    <h4 class="font-bold text-blue-900 flex items-center gap-2 mb-2">
-                        <i class="fa-solid fa-circle-info"></i>
-                        <span>הנחיות לדיווח שעות</span>
-                    </h4>
-                    <p class="text-sm text-blue-800 leading-relaxed">
-                        לצורך דיווח שעות יש לדווח באפליקציה <strong class="font-bold">Timewatch</strong> ואחר כך יש לשלוח את הדיווח למייל הבא:
-                    </p>
-                    <a href="mailto:rada-sahar@yemelin.org" class="mt-2 inline-flex items-center gap-1.5 font-semibold text-blue-900 hover:text-blue-700 underline break-all text-sm">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>rada-sahar@yemelin.org</span>
-                    </a>
-                </div>
-
             </div>
-
-            <!-- Left Column - Interactive Data Table -->
-            <div class="lg:col-span-2 space-y-6">
-                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-                    <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                        <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                            <i class="fa-solid fa-table-list text-rada-red"></i>
-                            <span>פירוט שעות יומי מצטבר</span>
-                        </h3>
-                        <button onclick="resetToInitialData()" class="text-xs text-gray-500 hover:text-rada-red transition flex items-center gap-1">
-                            <i class="fa-solid fa-rotate-left"></i>
-                            <span>אפס לנתוני בסיס</span>
-                        </button>
-                    </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-right border-collapse text-sm">
-                            <thead>
-                                <tr class="bg-slate-50 text-gray-600 border-b border-gray-200">
-                                    <th class="p-4 font-semibold">יום</th>
-                                    <th class="p-4 font-semibold">שעות עבודה בפועל</th>
-                                    <th class="p-4 font-semibold text-center">סה"כ שעות</th>
-                                    <th class="p-4 font-semibold text-center">רגילות (100%)</th>
-                                    <th class="p-4 font-semibold text-center">נוספות (125%)</th>
-                                    <th class="p-4 font-semibold text-left">שכר יומי משוער</th>
-                                    <th class="p-4 text-center"></th>
-                                </tr>
-                            </thead>
-                            <tbody id="shifts-tbody" class="divide-y divide-gray-100">
-                                <!-- Generated Dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -274,13 +289,13 @@
         const OT_RATE = BASE_RATE * 1.25;
         const REG_DAILY_LIMIT = 8.6; // 8 hours and 36 minutes
 
-        // Initial 5-day state requested by user
+        // Initial 5-day state requested by user with exact dates
         const initialShifts = [
-            { id: 1, day: "יום ראשון", raw: "10:10", totalHours: 10.17, regHours: 8.6, otHours: 1.57 },
-            { id: 2, day: "יום שני", raw: "10:00", totalHours: 10.00, regHours: 8.6, otHours: 1.40 },
-            { id: 3, day: "יום שלישי", raw: "10:03", totalHours: 10.05, regHours: 8.6, otHours: 1.45 },
-            { id: 4, day: "יום רביעי", raw: "09:15", totalHours: 9.25, regHours: 8.6, otHours: 0.65 },
-            { id: 5, day: "יום חמישי", raw: "09:00 עד 17:08", totalHours: 8.13, regHours: 8.13, otHours: 0.00 }
+            { id: 1, day: "05/07/2026 (יום א')", raw: "10:10", totalHours: 10.17, regHours: 8.6, otHours: 1.57 },
+            { id: 2, day: "06/07/2026 (יום ב')", raw: "10:00", totalHours: 10.00, regHours: 8.6, otHours: 1.40 },
+            { id: 3, day: "07/07/2026 (יום ג')", raw: "10:03", totalHours: 10.05, regHours: 8.6, otHours: 1.45 },
+            { id: 4, day: "08/07/2026 (יום ד')", raw: "09:15", totalHours: 9.25, regHours: 8.6, otHours: 0.65 },
+            { id: 5, day: "09/07/2026 (יום ה')", raw: "09:00 עד 17:08", totalHours: 8.13, regHours: 8.13, otHours: 0.00 }
         ];
 
         let shifts = [...initialShifts];
@@ -418,3 +433,4 @@
     </script>
 </body>
 </html>
+
