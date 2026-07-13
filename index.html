@@ -162,17 +162,6 @@
 
         <!-- Main Workspace Container -->
         <div class="p-6 space-y-6">
-            
-            <!-- Missing Reporting Warning Banner -->
-            <div class="bg-red-50 border-r-4 border-rada-red p-4 rounded-xl shadow-sm flex items-center gap-3 fade-in">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-100 text-rada-red">
-                    <i class="fa-solid fa-triangle-exclamation text-lg animate-pulse"></i>
-                </span>
-                <div>
-                    <h4 class="font-bold text-red-900 text-sm md:text-base">התרעת דיווח שעות</h4>
-                    <p class="text-xs md:text-sm text-red-700">היום ה-12/07/2026 לא דווח כניסה ויציאה במערכת.</p>
-                </div>
-            </div>
 
             <!-- Dashboard Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -187,7 +176,7 @@
                         </div>
                         <div class="relative z-10">
                             <h3 class="text-lg font-medium text-slate-300">שכר ברוטו משוער (שבועי)</h3>
-                            <div id="grand-total-pay" class="text-4xl font-bold text-white mt-2">1,365.01 ₪</div>
+                            <div id="grand-total-pay" class="text-4xl font-bold text-white mt-2">1,654.88 ₪</div>
                             <div class="mt-4 pt-4 border-t border-slate-700 grid grid-cols-2 gap-4 text-xs text-slate-300">
                                 <div>
                                     <p>תעריף שעתי רגיל:</p>
@@ -205,15 +194,15 @@
                     <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm grid grid-cols-3 gap-4">
                         <div class="text-center">
                             <span class="block text-xs text-gray-500">סה"כ שעות</span>
-                            <span id="stat-total-hours" class="block text-xl font-bold text-slate-800 mt-1">47.59</span>
+                            <span id="stat-total-hours" class="block text-xl font-bold text-slate-800 mt-1">67.64</span>
                         </div>
                         <div class="text-center border-r border-gray-100">
                             <span class="block text-xs text-gray-500">רגילות (100%)</span>
-                            <span id="stat-reg-hours" class="block text-xl font-bold text-emerald-600 mt-1">42.53</span>
+                            <span id="stat-reg-hours" class="block text-xl font-bold text-emerald-600 mt-1">59.73</span>
                         </div>
                         <div class="text-center border-r border-gray-100">
                             <span class="block text-xs text-gray-500">נוספות (125%)</span>
-                            <span id="stat-ot-hours" class="block text-xl font-bold text-amber-500 mt-1">5.06</span>
+                            <span id="stat-ot-hours" class="block text-xl font-bold text-amber-500 mt-1">7.91</span>
                         </div>
                     </div>
 
@@ -226,9 +215,9 @@
                         <p class="text-sm text-blue-800 leading-relaxed">
                             לצורך דיווח שעות יש לדווח באפליקציה <strong class="font-bold">Timewatch</strong> ואחר כך יש לשלוח את הדיווח למייל הבא:
                         </p>
-                        <a href="mailto:rada-sahar@yemelin.org" class="mt-2 inline-flex items-center gap-1.5 font-semibold text-blue-900 hover:text-blue-700 underline break-all text-sm">
+                        <a href="mailto:time@drsrada.org" class="mt-2 inline-flex items-center gap-1.5 font-semibold text-blue-900 hover:text-blue-700 underline break-all text-sm">
                             <i class="fa-solid fa-envelope"></i>
-                            <span>rada-sahar@yemelin.org</span>
+                            <span>time@drsrada.org</span>
                         </a>
                     </div>
 
@@ -289,13 +278,15 @@
         const OT_RATE = BASE_RATE * 1.25;
         const REG_DAILY_LIMIT = 8.6; // 8 hours and 36 minutes
 
-        // Initial 5-day state requested by user with exact dates
+        // Initial state with exact dates including newly reported shift for 13/07
         const initialShifts = [
             { id: 1, day: "05/07/2026 (יום א')", raw: "10:10", totalHours: 10.17, regHours: 8.6, otHours: 1.57 },
             { id: 2, day: "06/07/2026 (יום ב')", raw: "10:00", totalHours: 10.00, regHours: 8.6, otHours: 1.40 },
             { id: 3, day: "07/07/2026 (יום ג')", raw: "10:03", totalHours: 10.05, regHours: 8.6, otHours: 1.45 },
             { id: 4, day: "08/07/2026 (יום ד')", raw: "09:15", totalHours: 9.25, regHours: 8.6, otHours: 0.65 },
-            { id: 5, day: "09/07/2026 (יום ה')", raw: "09:00 עד 17:08", totalHours: 8.13, regHours: 8.13, otHours: 0.00 }
+            { id: 5, day: "09/07/2026 (יום ה')", raw: "09:00 עד 17:08", totalHours: 8.13, regHours: 8.13, otHours: 0.00 },
+            { id: 6, day: "12/07/2026 (יום א')", raw: "07:29 עד 17:30", totalHours: 10.02, regHours: 8.6, otHours: 1.42 },
+            { id: 7, day: "13/07/2026 (יום ב')", raw: "07:29 עד 17:30", totalHours: 10.02, regHours: 8.6, otHours: 1.42 }
         ];
 
         let shifts = [...initialShifts];
