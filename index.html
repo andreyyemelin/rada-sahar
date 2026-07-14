@@ -176,7 +176,7 @@
                         </div>
                         <div class="relative z-10">
                             <h3 class="text-lg font-medium text-slate-300">שכר ברוטו משוער (שבועי)</h3>
-                            <div id="grand-total-pay" class="text-4xl font-bold text-white mt-2">1,654.88 ₪</div>
+                            <div id="grand-total-pay" class="text-4xl font-bold text-white mt-2">2,237.78 ₪</div>
                             <div class="mt-4 pt-4 border-t border-slate-700 grid grid-cols-2 gap-4 text-xs text-slate-300">
                                 <div>
                                     <p>תעריף שעתי רגיל:</p>
@@ -194,15 +194,15 @@
                     <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm grid grid-cols-3 gap-4">
                         <div class="text-center">
                             <span class="block text-xs text-gray-500">סה"כ שעות</span>
-                            <span id="stat-total-hours" class="block text-xl font-bold text-slate-800 mt-1">67.64</span>
+                            <span id="stat-total-hours" class="block text-xl font-bold text-slate-800 mt-1">77.74</span>
                         </div>
                         <div class="text-center border-r border-gray-100">
                             <span class="block text-xs text-gray-500">רגילות (100%)</span>
-                            <span id="stat-reg-hours" class="block text-xl font-bold text-emerald-600 mt-1">59.73</span>
+                            <span id="stat-reg-hours" class="block text-xl font-bold text-emerald-600 mt-1">68.33</span>
                         </div>
                         <div class="text-center border-r border-gray-100">
                             <span class="block text-xs text-gray-500">נוספות (125%)</span>
-                            <span id="stat-ot-hours" class="block text-xl font-bold text-amber-500 mt-1">7.91</span>
+                            <span id="stat-ot-hours" class="block text-xl font-bold text-amber-500 mt-1">9.41</span>
                         </div>
                     </div>
 
@@ -278,7 +278,7 @@
         const OT_RATE = BASE_RATE * 1.25;
         const REG_DAILY_LIMIT = 8.6; // 8 hours and 36 minutes
 
-        // Initial state with exact dates including newly reported shift for 13/07
+        // Initial state with exact dates including newly reported shift for 14/07
         const initialShifts = [
             { id: 1, day: "05/07/2026 (יום א')", raw: "10:10", totalHours: 10.17, regHours: 8.6, otHours: 1.57 },
             { id: 2, day: "06/07/2026 (יום ב')", raw: "10:00", totalHours: 10.00, regHours: 8.6, otHours: 1.40 },
@@ -286,7 +286,8 @@
             { id: 4, day: "08/07/2026 (יום ד')", raw: "09:15", totalHours: 9.25, regHours: 8.6, otHours: 0.65 },
             { id: 5, day: "09/07/2026 (יום ה')", raw: "09:00 עד 17:08", totalHours: 8.13, regHours: 8.13, otHours: 0.00 },
             { id: 6, day: "12/07/2026 (יום א')", raw: "07:29 עד 17:30", totalHours: 10.02, regHours: 8.6, otHours: 1.42 },
-            { id: 7, day: "13/07/2026 (יום ב')", raw: "07:29 עד 17:30", totalHours: 10.02, regHours: 8.6, otHours: 1.42 }
+            { id: 7, day: "13/07/2026 (יום ב')", raw: "07:29 עד 17:30", totalHours: 10.02, regHours: 8.6, otHours: 1.42 },
+            { id: 8, day: "14/07/2026 (יום ג')", raw: "07:34 עד 17:40", totalHours: 10.10, regHours: 8.6, otHours: 1.50 }
         ];
 
         let shifts = [...initialShifts];
