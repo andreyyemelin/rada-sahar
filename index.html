@@ -278,7 +278,7 @@
         const OT_RATE = BASE_RATE * 1.25;
         const REG_DAILY_LIMIT = 8.6; // 8 hours and 36 minutes
 
-        // Initial state with exact dates including newly reported shift for 15/07
+        // Initial state with exact dates including newly reported shift for 16/07
         const initialShifts = [
             { id: 1, day: "05/07/2026 (יום א')", raw: "10:10", totalHours: 10.17, regHours: 8.6, otHours: 1.57 },
             { id: 2, day: "06/07/2026 (יום ב')", raw: "10:00", totalHours: 10.00, regHours: 8.6, otHours: 1.40 },
@@ -288,7 +288,8 @@
             { id: 6, day: "12/07/2026 (יום א')", raw: "07:29 עד 17:30", totalHours: 10.02, regHours: 8.6, otHours: 1.42 },
             { id: 7, day: "13/07/2026 (יום ב')", raw: "07:29 עד 17:30", totalHours: 10.02, regHours: 8.6, otHours: 1.42 },
             { id: 8, day: "14/07/2026 (יום ג')", raw: "07:34 עד 17:40", totalHours: 10.10, regHours: 8.6, otHours: 1.50 },
-            { id: 9, day: "15/07/2026 (יום ד')", raw: "07:29 עד 16:37", totalHours: 9.13, regHours: 8.6, otHours: 0.53 }
+            { id: 9, day: "15/07/2026 (יום ד')", raw: "07:29 עד 16:37", totalHours: 9.13, regHours: 8.6, otHours: 0.53 },
+            { id: 10, day: "16/07/2026 (יום ה')", raw: "07:27 עד 16:45", totalHours: 9.30, regHours: 8.6, otHours: 0.70 }
         ];
 
         let shifts = [...initialShifts];
@@ -426,4 +427,3 @@
     </script>
 </body>
 </html>
-
